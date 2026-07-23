@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Ticket Detail
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="container mt-5">
+
+
+<div class="card shadow">
+
+
+<div class="card-header bg-primary text-white">
+
+
+<h4>
+
+Ticket #{{ ticket.id }}
+
+</h4>
+
+
+</div>
+
+
+
+
+<div class="card-body">
+
+
+<h5>
+
+{{ ticket.subject }}
+
+</h5>
+
+
+
+<p>
+
+{{ ticket.description }}
+
+</p>
+
+
+
+<hr>
+
+
+<p>
+
+<strong>Status:</strong>
+
+{{ ticket.status }}
+
+</p>
+
+
+<p>
+
+<strong>Priority:</strong>
+
+{{ ticket.priority }}
+
+</p>
+
+
+<p>
+
+<strong>Assigned:</strong>
+
+{% if ticket.assigned_to %}
+
+{{ ticket.assigned_to.user.username }}
+
+{% else %}
+
+Not Assigned
+
+{% endif %}
+
+
+</p>
+
+
+
+<hr>
+
+
+<h5>
+Chat
+</h5>
+
+
+
+
+<div class="border p-3 mb-3">
+
+
+{% for msg in messages_list %}
+
+
+<div class="mb-2">
+
+
+<strong>
+
+{{ msg.user.username }}
+
+</strong>
+
+
+:
+
+{{ msg.content }}
+
+
+<br>
+
+
+<small class="text-muted">
+
+{{ msg.created_at }}
+
+</small>
+
+
+
+</div>
+
+
+
+{% empty %}
+
+
+No messages yet.
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+
+
+<form method="POST">
+
+
+{% csrf_token %}
+
+
+{{ form.as_p }}
+
+
+
+<button class="btn btn-success">
+
+Send Message
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+{% endblock %}

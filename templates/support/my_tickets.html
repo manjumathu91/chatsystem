@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+My Assigned Tickets
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+
+
+<h2>
+
+My Assigned Tickets
+
+</h2>
+
+
+<p>
+
+Staff:
+<strong>
+{{ staff.user.username }}
+</strong>
+
+</p>
+
+
+
+
+{% if tickets %}
+
+
+
+<div class="table-responsive">
+
+
+<table class="table table-bordered shadow">
+
+
+<thead class="table-success">
+
+
+<tr>
+
+<th>ID</th>
+
+<th>Customer</th>
+
+<th>Subject</th>
+
+<th>Status</th>
+
+<th>Priority</th>
+
+<th>Action</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+{% for ticket in tickets %}
+
+
+<tr>
+
+
+<td>
+#{{ ticket.id }}
+</td>
+
+
+<td>
+{{ ticket.user.username }}
+</td>
+
+
+<td>
+{{ ticket.subject }}
+</td>
+
+
+<td>
+{{ ticket.status }}
+</td>
+
+
+<td>
+{{ ticket.priority }}
+</td>
+
+
+
+<td>
+
+
+<a href="{% url 'ticket_detail' ticket.id %}"
+class="btn btn-primary btn-sm">
+
+Open Chat
+
+</a>
+
+
+</td>
+
+
+</tr>
+
+
+
+{% endfor %}
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+{% else %}
+
+
+<div class="alert alert-info">
+
+No assigned tickets.
+
+</div>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Server Error
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+
+
+<div class="text-center">
+
+
+<h1 class="display-1 text-danger">
+
+500
+
+</h1>
+
+
+
+<h3>
+
+Internal Server Error
+
+</h3>
+
+
+
+<p>
+
+Something went wrong.
+Please try again later.
+
+</p>
+
+
+
+<a href="{% url 'home' %}"
+class="btn btn-primary">
+
+Back To Home
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% endblock %}

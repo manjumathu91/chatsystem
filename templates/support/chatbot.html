@@ -1,0 +1,122 @@
+
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+{% block title %}
+
+AI Support Chat
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="container mt-5">
+
+
+    <div class="row justify-content-center">
+
+
+        <div class="col-md-7">
+
+
+            <div class="card shadow">
+
+
+                <div class="card-header bg-primary text-white">
+
+
+                    <h4 class="mb-0 text-center">
+
+                        🤖 AI Support Assistant
+
+                    </h4>
+
+
+                </div>
+
+
+
+
+                <div class="card-body">
+
+
+                    <div id="chat-box"
+                         class="chat-box mb-3">
+
+
+                        <div class="chat-message chat-ai">
+
+                            Hello 👋
+                            <br>
+                            How can I help you today?
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <form id="chat-form">
+
+
+                        {% csrf_token %}
+
+
+                        <div class="input-group">
+
+
+                            <input 
+                            type="text"
+                            id="user-input"
+                            class="form-control"
+                            placeholder="Ask your question..."
+                            required>
+
+
+
+                            <button 
+                            class="btn btn-primary"
+                            type="submit">
+
+                                Send
+
+                            </button>
+
+
+                        </div>
+
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script src="{% static 'js/chatbot.js' %}"></script>
+
+
+{% endblock %}
